@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 interface Product {
   name: string;
   description: string;
-  price: string;
   image: string;
   details: string;
   dimensions: string;
@@ -17,7 +16,6 @@ const Products: React.FC = () => {
     {
       name: 'Colar Lua Mística',
       description: 'Colar artesanal com miçangas prateadas e pingente de lua crescente. Perfeito para rituais noturnos.',
-      price: 'R$ 45,00',
       image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop',
       details: 'Colar delicado confeccionado com miçangas de vidro prateadas e um pingente de lua crescente em metal. Cada peça é única e carrega a energia da lua.',
       dimensions: 'Comprimento: 45cm (ajustável)',
@@ -26,7 +24,6 @@ const Products: React.FC = () => {
     {
       name: 'Pulseira Proteção',
       description: 'Pulseira de miçangas pretas e douradas, confeccionada com intenção de proteção e força interior.',
-      price: 'R$ 35,00',
       image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop',
       details: 'Pulseira artesanal que combina miçangas pretas e douradas em um padrão harmonioso. Ideal para uso diário.',
       dimensions: 'Tamanho único (ajustável de 16 a 20cm)',
@@ -35,7 +32,6 @@ const Products: React.FC = () => {
     {
       name: 'Brincos Estrela',
       description: 'Brincos delicados com miçangas coloridas formando estrelas. Leveza e magia em cada movimento.',
-      price: 'R$ 28,00',
       image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop',
       details: 'Par de brincos em formato de estrela, confeccionados com miçangas coloridas que brilham com a luz. Leves e confortáveis para uso prolongado.',
       dimensions: 'Altura: 4cm',
@@ -44,7 +40,6 @@ const Products: React.FC = () => {
     {
       name: 'Colar Chakras',
       description: 'Colar com miçangas nas cores dos 7 chakras. Equilíbrio e harmonização energética.',
-      price: 'R$ 52,00',
       image: 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=500&fit=crop',
       details: 'Colar especial com miçangas representando as cores dos 7 chakras: vermelho, laranja, amarelo, verde, azul, índigo e violeta. Para equilíbrio energético.',
       dimensions: 'Comprimento: 50cm (ajustável)',
@@ -53,7 +48,6 @@ const Products: React.FC = () => {
     {
       name: 'Pulseira Abundância',
       description: 'Pulseira artesanal em tons de verde e dourado. Atrai prosperidade e abundância.',
-      price: 'R$ 38,00',
       image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop',
       details: 'Pulseira que combina tons de verde e dourado, simbolizando prosperidade e crescimento. Design elegante e versátil.',
       dimensions: 'Tamanho único (ajustável de 16 a 20cm)',
@@ -62,7 +56,6 @@ const Products: React.FC = () => {
     {
       name: 'Tornozeleira Verão',
       description: 'Tornozeleira vibrante com miçangas coloridas. Alegria e leveza para seus passos.',
-      price: 'R$ 32,00',
       image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop',
       details: 'Tornozeleira colorida e vibrante, perfeita para o verão. Cada cor traz alegria e leveza aos seus passos.',
       dimensions: 'Comprimento: 25cm (ajustável)',
@@ -86,35 +79,30 @@ const Products: React.FC = () => {
           {products.map((product, index) => (
             <div 
               key={index}
-              className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-300"
+              className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-300 flex flex-col h-full min-h-[420px]"
+              style={{ minHeight: 420 }}
             >
-              <div className="relative overflow-hidden aspect-square">
+              <div className="relative overflow-hidden aspect-square cursor-pointer" onClick={() => setSelectedProduct(product)}>
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-light tracking-[2px] mb-2 text-gold">
                   {product.name}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
                   {product.description}
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-light text-gold">
-                    {product.price}
-                  </span>
-                  <button 
-                    onClick={() => setSelectedProduct(product)}
-                    className="px-6 py-2 bg-transparent border border-gold text-gold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-gold hover:text-black"
-                  >
-                    Ver Mais
-                  </button>
-                </div>
+                <button 
+                  onClick={() => setSelectedProduct(product)}
+                  className="px-6 py-2 bg-transparent border border-gold text-gold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-gold hover:text-black mt-auto cursor-pointer"
+                >
+                  Ver Mais
+                </button>
               </div>
             </div>
           ))}
@@ -140,59 +128,35 @@ const Products: React.FC = () => {
             <div className="relative">
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/80 text-gold rounded-full transition-colors"
+                className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/80 text-gold rounded-full transition-colors cursor-pointer"
               >
                 ✕
               </button>
-              
               <img
                 src={selectedProduct.image}
                 alt={selectedProduct.name}
                 className="w-full h-80 object-cover rounded-t-2xl"
               />
             </div>
-            
             <div className="p-8">
               <h3 className="text-3xl font-light tracking-[3px] mb-2 text-gold">
                 {selectedProduct.name}
               </h3>
-              <p className="text-4xl font-light text-gold mb-6">
-                {selectedProduct.price}
-              </p>
-              
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="text-gold font-light tracking-wider uppercase text-sm mb-2">Descrição</h4>
                   <p className="leading-relaxed">{selectedProduct.details}</p>
                 </div>
-                
                 <div>
                   <h4 className="text-gold font-light tracking-wider uppercase text-sm mb-2">Dimensões</h4>
                   <p>{selectedProduct.dimensions}</p>
                 </div>
-                
                 <div>
                   <h4 className="text-gold font-light tracking-wider uppercase text-sm mb-2">Materiais</h4>
                   <p>{selectedProduct.materials}</p>
                 </div>
               </div>
-              
-              <div className="mt-8 flex gap-4">
-                <a
-                  href="https://www.instagram.com/valedesalem/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center py-3 px-6 bg-gold text-black font-light tracking-wider uppercase transition-all duration-300 hover:bg-gold/90"
-                >
-                  Comprar no Instagram
-                </a>
-                <button
-                  onClick={() => setSelectedProduct(null)}
-                  className="px-6 py-3 border border-gold/40 text-gray-400 font-light tracking-wider uppercase transition-all duration-300 hover:border-gold hover:text-gold"
-                >
-                  Fechar
-                </button>
-              </div>
+              {/* Botões removidos, apenas o X para fechar */}
             </div>
           </div>
         </div>
