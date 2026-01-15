@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import '../hero-mobile.css';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -37,8 +38,8 @@ const Hero: React.FC = () => {
 
   return (
     <section className="min-h-[70vh] flex items-center justify-center flex-col py-16 px-8 relative" ref={heroRef}>
-      <div 
-        className="absolute top-[10%] right-[10%] w-[120px] h-[120px] rounded-full opacity-90 shadow-[0_0_60px_rgba(212,175,55,0.5)]"
+      <div
+        className="absolute top-[10%] right-[10%] w-[120px] h-[120px] rounded-full opacity-90 shadow-[0_0_60px_rgba(212,175,55,0.5)] hero-moon-mobile"
         style={{ background: 'radial-gradient(circle at 30% 30%, #fff, #e5e5e5)' }}
         ref={moonRef}
       ></div>

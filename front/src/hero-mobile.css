@@ -1,0 +1,11 @@
+@media (max-width: 640px) {
+  .hero-moon-mobile {
+    position: absolute !important;
+    left: 50% !important;
+    top: 32px !important;
+    right: auto !important;
+    transform: translate(-50%, 0) !important;
+    margin-bottom: 0 !important;
+    z-index: 20 !important;
+  }
+}

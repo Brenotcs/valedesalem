@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import '../products-carousel.css';
 
 interface Product {
   name: string;
@@ -63,6 +64,25 @@ const Products: React.FC = () => {
     }
   ];
 
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = carouselRef.current;
+      if (!el) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      setProgress(maxScroll > 0 ? el.scrollLeft / maxScroll : 0);
+    };
+    const el = carouselRef.current;
+    if (el) {
+      el.addEventListener('scroll', handleScroll);
+    }
+    return () => {
+      if (el) el.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section id="produtos" className="py-20 px-8 border-t border-gold/30">
       <div className="max-w-[1200px] mx-auto">
@@ -74,12 +94,14 @@ const Products: React.FC = () => {
             Peças únicas feitas à mão com amor e energia positiva
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 carousel-products"
+          ref={carouselRef}
+        >
           {products.map((product, index) => (
-            <div 
+            <div
               key={index}
-              className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-300 flex flex-col h-full min-h-[420px]"
+              className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-300 flex flex-col h-full min-h-[420px] carousel-product-item"
               style={{ minHeight: 420 }}
             >
               <div className="relative overflow-hidden aspect-square cursor-pointer" onClick={() => setSelectedProduct(product)}>
@@ -97,7 +119,7 @@ const Products: React.FC = () => {
                 <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
                   {product.description}
                 </p>
-                <button 
+                <button
                   onClick={() => setSelectedProduct(product)}
                   className="px-6 py-2 bg-transparent border border-gold text-gold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-gold hover:text-black mt-auto cursor-pointer"
                 >
@@ -107,7 +129,19 @@ const Products: React.FC = () => {
             </div>
           ))}
         </div>
-        
+        {/* Barra de progresso do carrossel (apenas mobile) */}
+        <div className="block md:hidden w-full mt-2 mb-6">
+          <div style={{ height: 6, background: '#222', borderRadius: 4, overflow: 'hidden', width: '100%' }}>
+            <div
+              style={{
+                width: `${Math.round(progress * 100)}%`,
+                height: '100%',
+                background: 'linear-gradient(90deg, #d4af37 60%, #fffbe6 100%)',
+                transition: 'width 0.2s',
+              }}
+            />
+          </div>
+        </div>
         <div className="text-center mt-12">
           <p className="text-gray-400 text-sm italic">
             * Imagens ilustrativas. Entre em contato para ver nossos produtos disponíveis.
@@ -117,11 +151,11 @@ const Products: React.FC = () => {
 
       {/* Modal */}
       {selectedProduct && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
           onClick={() => setSelectedProduct(null)}
         >
-          <div 
+          <div
             className="bg-zinc-900 border-2 border-gold/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-[scaleIn_0.3s_ease-out]"
             onClick={(e) => e.stopPropagation()}
           >
@@ -161,7 +195,6 @@ const Products: React.FC = () => {
           </div>
         </div>
       )}
-      
       <style>{`
         @keyframes fadeIn {
           from {
@@ -171,7 +204,6 @@ const Products: React.FC = () => {
             opacity: 1;
           }
         }
-        
         @keyframes scaleIn {
           from {
             opacity: 0;
