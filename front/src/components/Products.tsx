@@ -84,13 +84,13 @@ const Products: React.FC = () => {
   }, []);
 
   return (
-    <section id="produtos" className="py-20 px-8 border-t border-gold/30">
+    <section id="produtos" className="py-20 px-8 border-t border-gold/30" style={{ background: '#fff', color: '#222' }}>
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-light tracking-[4px] mb-4 uppercase">
+          <h2 className="text-4xl font-light tracking-[4px] mb-4 uppercase" style={{ color: '#222' }}>
             Nossa Coleção
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-lg" style={{ color: '#444' }}>
             Peças únicas feitas à mão com amor e energia positiva
           </p>
         </div>
@@ -102,7 +102,7 @@ const Products: React.FC = () => {
             <div
               key={index}
               className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-300 flex flex-col h-full min-h-[420px] carousel-product-item"
-              style={{ minHeight: 420 }}
+              style={{ minHeight: 420, background: '#f7f7f7', color: '#222', border: '1px solid #e5e5e5' }}
             >
               <div className="relative overflow-hidden aspect-square cursor-pointer" onClick={() => setSelectedProduct(product)}>
                 <img
@@ -114,14 +114,15 @@ const Products: React.FC = () => {
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-light tracking-[2px] mb-2 text-gold">
-                  {product.name}
+                  <span style={{ color: '#bfa23a' }}>{product.name}</span>
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
-                  {product.description}
+                  <span style={{ color: '#555' }}>{product.description}</span>
                 </p>
                 <button
                   onClick={() => setSelectedProduct(product)}
                   className="px-6 py-2 bg-transparent border border-gold text-gold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-gold hover:text-black mt-auto cursor-pointer"
+                  style={{ color: '#bfa23a', borderColor: '#bfa23a' }}
                 >
                   Ver Mais
                 </button>
@@ -143,7 +144,7 @@ const Products: React.FC = () => {
           </div>
         </div>
         <div className="text-center mt-12">
-          <p className="text-gray-400 text-sm italic">
+          <p className="text-sm italic" style={{ color: '#666' }}>
             * Imagens ilustrativas. Entre em contato para ver nossos produtos disponíveis.
           </p>
         </div>
@@ -152,17 +153,18 @@ const Products: React.FC = () => {
       {/* Modal */}
       {selectedProduct && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="bg-zinc-900 border-2 border-gold/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-[scaleIn_0.3s_ease-out]"
+            className="border-2 border-gold/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-[scaleIn_0.3s_ease-out]"
+            style={{ background: '#f7f7f7', color: '#222' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/80 text-gold rounded-full transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-[#e5e5e5] hover:bg-[#bfa23a] text-[#bfa23a] hover:text-white rounded-full transition-colors cursor-pointer"
               >
                 ✕
               </button>
@@ -173,21 +175,21 @@ const Products: React.FC = () => {
               />
             </div>
             <div className="p-8">
-              <h3 className="text-3xl font-light tracking-[3px] mb-2 text-gold">
+              <h3 className="text-3xl font-light tracking-[3px] mb-2" style={{ color: '#bfa23a' }}>
                 {selectedProduct.name}
               </h3>
-              <div className="space-y-4 text-gray-300">
+              <div className="space-y-4">
                 <div>
-                  <h4 className="text-gold font-light tracking-wider uppercase text-sm mb-2">Descrição</h4>
-                  <p className="leading-relaxed">{selectedProduct.details}</p>
+                  <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Descrição</h4>
+                  <p className="leading-relaxed" style={{ color: '#444' }}>{selectedProduct.details}</p>
                 </div>
                 <div>
-                  <h4 className="text-gold font-light tracking-wider uppercase text-sm mb-2">Dimensões</h4>
-                  <p>{selectedProduct.dimensions}</p>
+                  <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Dimensões</h4>
+                  <p style={{ color: '#444' }}>{selectedProduct.dimensions}</p>
                 </div>
                 <div>
-                  <h4 className="text-gold font-light tracking-wider uppercase text-sm mb-2">Materiais</h4>
-                  <p>{selectedProduct.materials}</p>
+                  <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Materiais</h4>
+                  <p style={{ color: '#444' }}>{selectedProduct.materials}</p>
                 </div>
               </div>
               {/* Botões removidos, apenas o X para fechar */}
