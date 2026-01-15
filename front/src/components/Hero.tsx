@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../ThemeContext';
 import '../hero-mobile.css';
 
 const Hero: React.FC = () => {
@@ -36,38 +37,55 @@ const Hero: React.FC = () => {
     };
   }, []);
 
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   return (
-    <section className="min-h-[70vh] flex items-center justify-center flex-col py-16 px-8 relative" ref={heroRef}>
+    <section
+      className="min-h-[70vh] flex items-center justify-center flex-col py-16 px-8 relative"
+      ref={heroRef}
+      style={{
+        background: isLight ? '#fff' : '#18181a',
+        color: isLight ? '#222' : '#fff',
+        transition: 'background 0.3s, color 0.3s'
+      }}
+    >
       <div
         className="absolute top-[10%] right-[10%] w-[120px] h-[120px] rounded-full opacity-90 shadow-[0_0_60px_rgba(212,175,55,0.5)] hero-moon-mobile"
-        style={{ background: 'radial-gradient(circle at 30% 30%, #fff, #e5e5e5)' }}
+        style={{ background: isLight ? 'radial-gradient(circle at 30% 30%, #fff, #e5e5e5)' : 'radial-gradient(circle at 30% 30%, #222, #444)' }}
         ref={moonRef}
       ></div>
       <div className="max-w-[800px] text-center z-10">
         <h1 className="text-5xl font-light mb-6 tracking-[4px] leading-tight">
           ☾ Acessórios Artesanais ☾
         </h1>
-        <p className="text-lg leading-relaxed mb-4 text-gray-300 tracking-wide italic">
+        <p className="text-lg leading-relaxed mb-4 tracking-wide italic" style={{ color: isLight ? '#444' : '#e5e5e5' }}>
           Mudando sua vida com magia e energia positiva
         </p>
-        <p className="text-base text-gold mb-2">
+        <p className="text-base mb-2" style={{ color: '#bfa23a' }}>
           Salvador-BA
         </p>
-        <p className="text-sm text-gray-400 mb-12">
+        <p className="text-sm mb-12" style={{ color: isLight ? '#888' : '#ccc' }}>
           Enviamos para todo o Brasil
         </p>
         <a 
           href="#produtos" 
-          className="inline-block py-4 px-12 bg-transparent border-2 border-gold text-gold no-underline tracking-[3px] uppercase text-sm transition-all duration-300 relative overflow-hidden group hover:text-black"
+          className="inline-block py-4 px-12 bg-transparent border-2 border-gold no-underline tracking-[3px] uppercase text-sm transition-all duration-300 relative overflow-hidden group"
+          style={{ color: '#bfa23a', borderColor: '#bfa23a', background: isLight ? '#fff' : '#222', position: 'relative', zIndex: 1 }}
         >
-          <span className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-300 -z-10"></span>
-          Explorar Coleção
+          <span
+            className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-300 -z-10"
+            style={{ zIndex: 0 }}
+          ></span>
+          <span className="relative z-10 group-hover:text-black transition-colors duration-300">Explorar Coleção</span>
         </a>
       </div>
       <style>{`
         @keyframes twinkle {
           0%, 100% { opacity: 0; }
           50% { opacity: 1; }
+        }
+        .group:hover .group-hover\:text-black {
+          color: #18181a !important;
         }
       `}</style>
     </section>

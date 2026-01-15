@@ -1,4 +1,6 @@
 import React from 'react';
+import { ThemeProvider } from './ThemeContext';
+import { useApplyTheme } from './applyTheme';
 import ScrollProgress from './components/ScrollProgress';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,7 +9,8 @@ import Products from './components/Products';
 import Instagram from './components/Instagram';
 import Footer from './components/Footer';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  useApplyTheme();
   return (
     <div className="App">
       <ScrollProgress />
@@ -18,6 +21,14 @@ const App: React.FC = () => {
       <Instagram />
       <Footer />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 };
 

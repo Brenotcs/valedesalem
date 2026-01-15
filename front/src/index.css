@@ -10,7 +10,15 @@
   }
   
   body {
-    @apply bg-black text-gray-100 font-serif overflow-x-hidden;
+    @apply font-serif overflow-x-hidden;
+  }
+  body.theme-dark {
+    background: #18181a;
+    color: #f3f3f3;
+  }
+  body.theme-light {
+    background: #fff;
+    color: #222;
   }
   
   /* Esconder scrollbar mas manter funcionalidade */

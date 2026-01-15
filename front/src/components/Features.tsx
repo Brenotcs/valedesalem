@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../ThemeContext';
 
 interface Feature {
   icon: string;
@@ -25,18 +26,30 @@ const Features: React.FC = () => {
     }
   ];
 
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-20 px-8 max-w-[1200px] mx-auto border-t border-gold/30">
+    <section
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-20 px-8 max-w-[1200px] mx-auto border-t border-gold/30"
+      style={{ background: isLight ? '#fff' : undefined, color: isLight ? '#222' : undefined, transition: 'background 0.3s, color 0.3s' }}
+    >
       {features.map((feature: Feature, index: number) => (
-        <div 
-          className="text-center p-8 transition-transform duration-300 hover:-translate-y-2.5" 
+        <div
+          className="text-center p-8 transition-transform duration-300 hover:-translate-y-2.5"
           key={index}
+          style={{ background: isLight ? '#fff' : undefined, borderRadius: isLight ? 16 : undefined, boxShadow: isLight ? '0 2px 12px rgba(0,0,0,0.04)' : undefined }}
         >
           <div className="text-4xl mb-6 text-gold">{feature.icon}</div>
-          <h3 className="text-xl font-light tracking-[2px] mb-4 uppercase">
+          <h3
+            className="text-xl font-light tracking-[2px] mb-4 uppercase"
+            style={{ color: isLight ? '#222' : undefined }}
+          >
             {feature.title}
           </h3>
-          <p className="text-gray-400 leading-relaxed tracking-wide">
+          <p
+            className="leading-relaxed tracking-wide"
+            style={{ color: isLight ? '#444' : undefined }}
+          >
             {feature.description}
           </p>
         </div>

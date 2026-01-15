@@ -101,16 +101,16 @@ const Products: React.FC = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-300 flex flex-col h-full min-h-[420px] carousel-product-item"
-              style={{ minHeight: 420, background: '#f7f7f7', color: '#222', border: '1px solid #e5e5e5' }}
+              className="group rounded-lg overflow-hidden border transition-all duration-300 flex flex-col h-full min-h-[420px] carousel-product-item"
+              style={{ minHeight: 420, height: '100%', background: '#f7f7f7', color: '#222', border: '1px solid #e5e5e5', maxWidth: '100%' }}
             >
-              <div className="relative overflow-hidden aspect-square cursor-pointer" onClick={() => setSelectedProduct(product)}>
+              <div className="relative overflow-hidden aspect-square cursor-pointer group/image" onClick={() => setSelectedProduct(product)}>
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-110 cursor-pointer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#e5e5e5] to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-light tracking-[2px] mb-2 text-gold">
@@ -121,10 +121,14 @@ const Products: React.FC = () => {
                 </p>
                 <button
                   onClick={() => setSelectedProduct(product)}
-                  className="px-6 py-2 bg-transparent border border-gold text-gold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-gold hover:text-black mt-auto cursor-pointer"
-                  style={{ color: '#bfa23a', borderColor: '#bfa23a' }}
+                  className="px-6 py-2 bg-transparent border-2 border-gold no-underline text-gold text-sm tracking-wider uppercase mt-auto cursor-pointer relative overflow-hidden group/button"
+                  style={{ color: '#bfa23a', borderColor: '#bfa23a', background: '#fff', position: 'relative', zIndex: 1 }}
                 >
-                  Ver Mais
+                  <span
+                    className="absolute inset-0 bg-gold -translate-x-full group-hover/button:translate-x-0 transition-transform duration-300 -z-10"
+                    style={{ zIndex: 0 }}
+                  ></span>
+                  <span className="relative z-10 group-hover/button:text-black transition-colors duration-300">Ver Mais</span>
                 </button>
               </div>
             </div>
@@ -215,6 +219,14 @@ const Products: React.FC = () => {
             opacity: 1;
             transform: scale(1);
           }
+        }
+      `}</style>
+      <style>{`
+        .group\/button:hover .group-hover\/button\:translate-x-0 {
+          transform: translateX(0) !important;
+        }
+        .group\/button:hover .group-hover\/button\:text-black {
+          color: #18181a !important;
         }
       `}</style>
     </section>
