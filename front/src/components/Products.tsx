@@ -120,7 +120,7 @@ const Products: React.FC = () => {
                 }}
               >
               <div className="relative overflow-hidden aspect-square cursor-pointer group/image" onClick={() => setSelectedProduct(product)}>
-                <img
+                <img draggable="false"
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-110 cursor-pointer"
@@ -187,7 +187,7 @@ const Products: React.FC = () => {
               >
                 ✕
               </button>
-              <img
+              <img draggable="false"
                 src={selectedProduct.image}
                 alt={selectedProduct.name}
                 className="w-full h-80 object-cover rounded-t-2xl"

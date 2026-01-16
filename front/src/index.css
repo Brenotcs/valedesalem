@@ -31,4 +31,13 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
+
+  /* Bloqueia seleção, arrastar e clique direito em imagens */
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
 }

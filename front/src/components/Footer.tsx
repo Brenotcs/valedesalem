@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       className="text-center py-12 px-8 border-t border-gold/30 tracking-wider text-sm flex flex-col items-center gap-4"
       style={{ background: isLight ? '#fff' : '#18181a', color: isLight ? '#888' : '#ccc', transition: 'background 0.3s, color 0.3s' }}
     >
-      <img
+      <img draggable="false"
         src={isLight ? logo : logowhite}
         alt="Vale de Salem logo"
         className="mx-auto mb-2 w-24 h-auto"

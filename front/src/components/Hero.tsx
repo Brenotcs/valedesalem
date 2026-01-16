@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
         title="Alternar tema"
       ></div>
       <div className="max-w-[800px] text-center z-10">
-        <img
+        <img draggable="false"
           src={isLight ? logo : logowhite}
           alt="Vale de Salem logo"
           className="mx-auto mb-6 w-32 h-auto"

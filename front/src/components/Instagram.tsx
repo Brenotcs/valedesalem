@@ -81,7 +81,7 @@ const Instagram: React.FC = () => {
               rel="noopener noreferrer"
               className="relative overflow-hidden rounded-lg group aspect-square"
             >
-              <img
+              <img draggable="false"
                 src={post.image}
                 alt={post.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
