@@ -99,13 +99,26 @@ const Products: React.FC = () => {
           ref={carouselRef}
         >
           {products.map((product, index) => (
-            <div
-              key={index}
-              className="group rounded-lg overflow-hidden border transition-all duration-300 flex flex-col h-full min-h-[420px] carousel-product-item"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              style={{ minHeight: 420, height: '100%', background: '#f7f7f7', color: '#222', border: '1px solid #e5e5e5', maxWidth: '100%' }}
-            >
+              <div
+                key={index}
+                className="group rounded-lg overflow-hidden border transition-all duration-300 flex flex-col h-full min-h-[420px] carousel-product-item"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                style={{
+                  minHeight: 480,
+                  maxHeight: 480,
+                  height: 480,
+                  background: '#f7f7f7',
+                  color: '#222',
+                  border: '1px solid #e5e5e5',
+                  maxWidth: 340,
+                  width: '100%',
+                  margin: '0 auto',
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
               <div className="relative overflow-hidden aspect-square cursor-pointer group/image" onClick={() => setSelectedProduct(product)}>
                 <img
                   src={product.image}
