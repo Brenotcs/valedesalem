@@ -4,6 +4,8 @@
     right: 16px !important;
     left: auto !important;
     top: 32px !important;
+    width: 80px !important;
+    height: 80px !important;
     transform: none !important;
     margin-bottom: 0 !important;
     z-index: 20 !important;
