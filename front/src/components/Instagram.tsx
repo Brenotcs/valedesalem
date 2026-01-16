@@ -32,7 +32,7 @@ const Instagram: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-block mb-4">
+          <div className="inline-block mb-4" data-aos="zoom-in" data-aos-delay="100">
             <svg 
               className="w-16 h-16 mx-auto" 
               viewBox="0 0 24 24" 
@@ -52,7 +52,7 @@ const Instagram: React.FC = () => {
               <circle cx="17.5" cy="6.5" r="1.5" fill="url(#instagram-gradient)"/>
             </svg>
           </div>
-          <h2 className="text-3xl font-light tracking-[4px] mb-6 uppercase" style={{ color: isLight ? '#222' : '#fff' }}>
+          <h2 className="text-3xl font-light tracking-[4px] mb-6 uppercase" style={{ color: isLight ? '#222' : '#fff' }} data-aos="fade-up" data-aos-delay="250">
             Siga no Instagram
           </h2>
           <a 
@@ -61,6 +61,8 @@ const Instagram: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-block py-3 px-8 bg-transparent border-2 border-gold no-underline tracking-[2px] text-lg transition-all duration-300 relative overflow-hidden group"
             style={{ color: '#bfa23a', borderColor: '#bfa23a', background: isLight ? '#fff' : '#18181a', position: 'relative', zIndex: 1 }}
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <span
               className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-300 -z-10"
@@ -85,8 +87,30 @@ const Instagram: React.FC = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-lg" style={{ color: isLight ? '#bfa23a' : '#fff' }}>
-                  Ver no Instagram
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {isLight ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="w-10 h-10"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" stroke="#fff" strokeWidth="2" fill="none"/>
+                      <circle cx="12" cy="12" r="4" stroke="#fff" strokeWidth="2" fill="none"/>
+                      <circle cx="17.5" cy="6.5" r="1.5" fill="#fff"/>
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="w-10 h-10"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" stroke="#bfa23a" strokeWidth="2" fill="none"/>
+                      <circle cx="12" cy="12" r="4" stroke="#bfa23a" strokeWidth="2" fill="none"/>
+                      <circle cx="17.5" cy="6.5" r="1.5" fill="#bfa23a"/>
+                    </svg>
+                  )}
                 </span>
               </div>
             </a>

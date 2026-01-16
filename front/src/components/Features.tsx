@@ -35,8 +35,10 @@ const Features: React.FC = () => {
     >
       {features.map((feature: Feature, index: number) => (
         <div
-          className="text-center p-8 transition-transform duration-300 hover:-translate-y-2.5"
+          className="text-center p-8"
           key={index}
+          data-aos="fade-up"
+          data-aos-delay={index * 120}
           style={{ background: isLight ? '#fff' : undefined, borderRadius: isLight ? 16 : undefined, boxShadow: isLight ? '0 2px 12px rgba(0,0,0,0.04)' : undefined }}
         >
           <div className="text-4xl mb-6 text-gold">{feature.icon}</div>
