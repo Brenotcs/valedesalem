@@ -30,6 +30,7 @@ const Features: React.FC = () => {
   const isLight = theme === 'light';
   return (
     <section
+      id="features-section"
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-20 px-8 max-w-[1200px] mx-auto border-t border-gold/30"
       style={{ background: isLight ? '#fff' : undefined, color: isLight ? '#222' : undefined, transition: 'background 0.3s, color 0.3s' }}
     >
