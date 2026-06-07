@@ -1,6 +1,8 @@
 @media (max-width: 640px) {
   .carousel-products {
     display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;

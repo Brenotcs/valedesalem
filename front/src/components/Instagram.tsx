@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTheme } from '../ThemeContext';
-import img1 from '../assets/postsinsta/img1.jpg';
-import img2 from '../assets/postsinsta/img2.jpg';
-import img3 from '../assets/postsinsta/img3.jpg';
+import img1 from '../assets/postsinsta/img1.webp';
+import img2 from '../assets/postsinsta/img2.webp';
+import img3 from '../assets/postsinsta/img3.webp';
 
 const Instagram: React.FC = () => {
   const posts = [

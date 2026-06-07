@@ -12,55 +12,64 @@ interface Product {
 
 const Products: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const closeModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedProduct(null);
+      setIsClosing(false);
+    }, 300);
+  };
 
   const products: Product[] = [
     {
-      name: 'Colar Lua Mística',
-      description: 'Colar artesanal com miçangas prateadas e pingente de lua crescente. Perfeito para rituais noturnos.',
-      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=500&fit=crop',
-      details: 'Colar delicado confeccionado com miçangas de vidro prateadas e um pingente de lua crescente em metal. Cada peça é única e carrega a energia da lua.',
-      dimensions: 'Comprimento: 45cm (ajustável)',
-      materials: 'Miçangas de vidro, fecho em metal prateado, pingente de lua'
+      name: 'Produto Padrão 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+      image: 'https://placehold.co/500x500/e5e5e5/a3a3a3?text=Imagem+Vazia',
+      details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed arcu et odio elementum aliquet. Nullam sit amet elementum nisi.',
+      dimensions: 'Lorem ipsum: 45cm',
+      materials: 'Lorem ipsum, dolor sit amet'
     },
     {
-      name: 'Pulseira Proteção',
-      description: 'Pulseira de miçangas pretas e douradas, confeccionada com intenção de proteção e força interior.',
-      image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop',
-      details: 'Pulseira artesanal que combina miçangas pretas e douradas em um padrão harmonioso. Ideal para uso diário.',
-      dimensions: 'Tamanho único (ajustável de 16 a 20cm)',
-      materials: 'Miçangas de vidro pretas e douradas, fio resistente'
+      name: 'Produto Padrão 2',
+      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      image: 'https://placehold.co/500x500/e5e5e5/a3a3a3?text=Imagem+Vazia',
+      details: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.',
+      dimensions: 'Lorem ipsum: 20cm',
+      materials: 'Lorem, ipsum, dolor'
     },
     {
-      name: 'Brincos Estrela',
-      description: 'Brincos delicados com miçangas coloridas formando estrelas. Leveza e magia em cada movimento.',
-      image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop',
-      details: 'Par de brincos em formato de estrela, confeccionados com miçangas coloridas que brilham com a luz. Leves e confortáveis para uso prolongado.',
-      dimensions: 'Altura: 4cm',
-      materials: 'Miçangas coloridas, anzol em metal hipoalergênico'
+      name: 'Produto Padrão 3',
+      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: 'https://placehold.co/500x500/e5e5e5/a3a3a3?text=Imagem+Vazia',
+      details: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.',
+      dimensions: 'Lorem ipsum: 15cm',
+      materials: 'Sit amet, consectetur'
     },
     {
-      name: 'Colar Chakras',
-      description: 'Colar com miçangas nas cores dos 7 chakras. Equilíbrio e harmonização energética.',
-      image: 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=500&fit=crop',
-      details: 'Colar especial com miçangas representando as cores dos 7 chakras: vermelho, laranja, amarelo, verde, azul, índigo e violeta. Para equilíbrio energético.',
-      dimensions: 'Comprimento: 50cm (ajustável)',
-      materials: 'Miçangas coloridas representando cada chakra, fecho ajustável'
+      name: 'Produto Padrão 4',
+      description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+      image: 'https://placehold.co/500x500/e5e5e5/a3a3a3?text=Imagem+Vazia',
+      details: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.',
+      dimensions: 'Lorem ipsum: 10cm',
+      materials: 'Adipisci, velit, sed'
     },
     {
-      name: 'Pulseira Abundância',
-      description: 'Pulseira artesanal em tons de verde e dourado. Atrai prosperidade e abundância.',
-      image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop',
-      details: 'Pulseira que combina tons de verde e dourado, simbolizando prosperidade e crescimento. Design elegante e versátil.',
-      dimensions: 'Tamanho único (ajustável de 16 a 20cm)',
-      materials: 'Miçangas verdes e douradas, fio elástico resistente'
+      name: 'Produto Padrão 5',
+      description: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.',
+      image: 'https://placehold.co/500x500/e5e5e5/a3a3a3?text=Imagem+Vazia',
+      details: 'Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus.',
+      dimensions: 'Lorem ipsum: 5cm',
+      materials: 'Accusamus, et, iusto'
     },
     {
-      name: 'Tornozeleira Verão',
-      description: 'Tornozeleira vibrante com miçangas coloridas. Alegria e leveza para seus passos.',
-      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop',
-      details: 'Tornozeleira colorida e vibrante, perfeita para o verão. Cada cor traz alegria e leveza aos seus passos.',
-      dimensions: 'Comprimento: 25cm (ajustável)',
-      materials: 'Miçangas coloridas de vidro, fecho ajustável'
+      name: 'Produto Padrão 6',
+      description: 'Ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.',
+      image: 'https://placehold.co/500x500/e5e5e5/a3a3a3?text=Imagem+Vazia',
+      details: 'Sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+      dimensions: 'Lorem ipsum: 30cm',
+      materials: 'Blanditiis, praesentium'
     }
   ];
 
@@ -106,8 +115,6 @@ const Products: React.FC = () => {
                 data-aos-delay={index * 100}
                 style={{
                   minHeight: 480,
-                  maxHeight: 480,
-                  height: 480,
                   background: '#f7f7f7',
                   color: '#222',
                   border: '1px solid #e5e5e5',
@@ -172,68 +179,67 @@ const Products: React.FC = () => {
       {/* Modal */}
       {selectedProduct && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
-          onClick={() => setSelectedProduct(null)}
+          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 ${isClosing ? 'animate-[fadeOut_0.3s_ease-in_forwards]' : 'animate-[fadeIn_0.3s_ease-out]'}`}
+          onClick={closeModal}
         >
           <div
-            className="border-2 border-gold/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-[scaleIn_0.3s_ease-out]"
+            className={`border-2 border-gold/40 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden ${isClosing ? 'animate-[scaleOut_0.3s_ease-in_forwards]' : 'animate-[scaleIn_0.3s_ease-out]'}`}
             style={{ background: '#f7f7f7', color: '#222' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative">
-              <button
-                onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-[#e5e5e5] hover:bg-[#bfa23a] text-[#bfa23a] hover:text-white rounded-full transition-colors cursor-pointer"
-              >
-                ✕
-              </button>
-              <img draggable="false"
-                src={selectedProduct.image}
-                alt={selectedProduct.name}
-                className="w-full h-80 object-cover rounded-t-2xl"
-              />
-            </div>
-            <div className="p-8">
-              <h3 className="text-3xl font-light tracking-[3px] mb-2" style={{ color: '#bfa23a' }}>
-                {selectedProduct.name}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Descrição</h4>
-                  <p className="leading-relaxed" style={{ color: '#444' }}>{selectedProduct.details}</p>
-                </div>
-                <div>
-                  <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Dimensões</h4>
-                  <p style={{ color: '#444' }}>{selectedProduct.dimensions}</p>
-                </div>
-                <div>
-                  <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Materiais</h4>
-                  <p style={{ color: '#444' }}>{selectedProduct.materials}</p>
+            <div className="flex flex-col md:flex-row h-auto md:h-[600px] overflow-y-auto md:overflow-hidden">
+              <div className="w-full md:w-1/2 flex-shrink-0">
+                <img draggable="false"
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="w-full h-[300px] md:h-[600px] object-cover"
+                />
+              </div>
+              <div className="w-full md:w-1/2 p-8 relative flex flex-col justify-center overflow-y-auto">
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-[#e5e5e5] hover:bg-[#bfa23a] text-[#bfa23a] hover:text-white rounded-full transition-colors cursor-pointer"
+                >
+                  ✕
+                </button>
+                <h3 className="text-3xl font-light tracking-[3px] mb-6 pr-8" style={{ color: '#bfa23a' }}>
+                  {selectedProduct.name}
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Descrição</h4>
+                    <p className="leading-relaxed text-sm" style={{ color: '#444' }}>{selectedProduct.details}</p>
+                  </div>
+                  <div>
+                    <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Dimensões</h4>
+                    <p className="text-sm" style={{ color: '#444' }}>{selectedProduct.dimensions}</p>
+                  </div>
+                  <div>
+                    <h4 style={{ color: '#bfa23a' }} className="font-light tracking-wider uppercase text-sm mb-2">Materiais</h4>
+                    <p className="text-sm" style={{ color: '#444' }}>{selectedProduct.materials}</p>
+                  </div>
                 </div>
               </div>
-              {/* Botões removidos, apenas o X para fechar */}
             </div>
           </div>
         </div>
       )}
       <style>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
         }
         @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes scaleOut {
+          from { opacity: 1; transform: scale(1); }
+          to { opacity: 0; transform: scale(0.9); }
         }
       `}</style>
       <style>{`

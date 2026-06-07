@@ -8,6 +8,8 @@ import Features from './components/Features';
 import Products from './components/Products';
 import Instagram from './components/Instagram';
 import Footer from './components/Footer';
+import PopupLancamento from './components/PopupLancamento';
+import Lancamento from './components/Lancamento';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -20,9 +22,11 @@ const AppContent: React.FC = () => {
   return (
     <div className="App">
       <ScrollProgress />
+      <PopupLancamento />
       <Header />
       <Hero />
       <Features />
+      <Lancamento />
       <Products />
       <Instagram />
       <Footer />
